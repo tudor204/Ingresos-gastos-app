@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ingresos-Gastos</title>
-</head>
-<body>
-    <h1>Ésto es una lista de ingresos y gastos</h1>
+{% extends "base.html" %}
+
+{% block pageBase %}
+
+<h1>Esto seria una lista de Ingresos-Gastos</h1>
     <table>
         <thead>
             <tr>
@@ -14,29 +10,16 @@
                 <th>Concepto</th>
                 <th>Monto</th>
             </tr>
-        
         </thead>
         <tbody>
-            <tr>
-                <td>01/02/2025</td>
-                <td>Ropa</td>
-                <td>-150€</td>
-            </tr>
-            <tr>
-                <td>01/03/2025</td>
-                <td>Salario</td>
-                <td>1500€</td>
-            </tr>
-            <tr>
-                <td>15/03/2025</td>
-                <td>Supermercado</td>
-                <td>-230€</td>
-            </tr>
-
-        </tbody>
-
-        
-      </table>
-      
-</body>
-</html>
+            {%for item in data%}
+                <tr>
+                    <td>{{item.fecha}}</td>
+                    <td>{{item.concepto}}</td>
+                    <td>-{{item.monto}}€</td>
+                </tr>
+            {%endfor%}
+        </tbody>        
+        </table>
+        <a href="/new">Nuevo</a>
+{% endblock%}
