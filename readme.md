@@ -14,6 +14,14 @@ La librería utilizada en flask: https://flask.palletsprojects.com/en/stable/
 - en mac: ``` export FLASK_APP=main.py``` 
 - en windows:``` set FLASK_APP=main.py```
 
+## Otra opción de ejecucion
+- Crear un archivo .env y agregar lo siguiente
+```FLASK_APP=main.py```
+```FLASK_DEBUG=True```
+
+y luego par lanzar en la terminal pasar el comando
+```flask run```
+
 ## comando para ejecutar el servidor
 ``` flask --app main``` 
 
