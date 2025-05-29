@@ -1,24 +1,24 @@
 from appingresos_gastos import app
-from flask import render_template
+from flask import render_template,request
+import csv
 
 @app.route("/")
 def index():
-    datos=[
-        {"fecha":"01/02/2025",
-        "concepto":"Ropa",
-        "monto":"-150"},
-        {"fecha":"01/03/2025",
-        "concepto":"Salario",
-        "monto":"1500"},
-        {"fecha":"15/03/2025",
-        "concepto":"Supermercado",
-        "monto":"-230"},
-        ]
+    datos=[]
+    fichero = open("data/movimientos.csv","r")
+    csvReader = csv.reader(fichero,delimiter=",",quotechar='"')
+    #recorrer el objeto csvReader y cargar cada registro en la lista datos
+    for item in csvReader:
+        datos.append(item)    
     
     return render_template("index.html",data = datos)
 
-@app.route("/new")
+@app.route("/new",methods=["GET","POST"])
 def creat():
+    if request.method == "POST":
+      
+        return f"datos a registar:{request.form}"
+
     return render_template("new.html",title="Registro",tipoAccion="Registro",tipoBoton="Guardar")
 
 @app.route("/update")

@@ -4,15 +4,15 @@
 
 <h1>Esto seria {{tipoAccion}} de datos</h1>
 
-        <form>
-            <label>Fecha:</label><br>
+        <form action="/new" method="POST">
+            <label>Fecha:</label>
             <input type="date" name="fecha"><br>
-            <label>Concepto:</label><br>
-            <input type="text"name="concepto"><br>
-            <label>Monto:</label><br>
-            <input type="number"name="monto"><br><br>
-            <button type="submit">{{tipoBoton}}</button><br>
-          </form>    
+            <label>Concepto:</label>
+            <input type="text"name="concepto"required><br>
+            <label>Monto:</label>
+            <input type="number"name="monto"required><br><br>
+            <button type="submit">{{tipoBoton}}</button>
+        </form>    
           <a href="/">Volver</a>
 
 
