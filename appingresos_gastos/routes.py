@@ -14,12 +14,17 @@ def index():
     return render_template("index.html",data = datos)
 
 @app.route("/new",methods=["GET","POST"])
-def creat():
+def create():
     if request.method == "POST":
-      
-        return f"datos a registar:{request.form}"
-
-    return render_template("new.html",title="Registro",tipoAccion="Registro",tipoBoton="Guardar")
+        #acceder al archivo y configurar para carar nuevo registro
+        mifichero = open("data/movimientos.csv","a",newline="")
+        #llamar al metodo writer de escritura y configuramos el formato
+        lectura = csv.writer(mifichero,delimiter=",",quotechar='"')
+        #registramos los datos recibidos
+        lectura.writerow([request.form["fecha"],request.form["concepto"],request.form["monto"]])
+        return "registro correcto"
+    else:
+        return render_template("new.html",title="Registro",tipoAccion="Registro",tipoBoton="Guardar")
 
 @app.route("/update")
 def edit():
