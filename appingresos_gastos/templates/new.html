@@ -1,16 +1,1 @@
 {% extends "form.html" %}
-
-{% block pageBase %}
-
-<h1>Esto seria un registro de Ingresos-Gastos</h1>
-        <form method="POST">
-            <label>Fecha:</label><br>
-            <input type="date" name="fecha"><br>
-            <label>Concepto:</label><br>
-            <input type="text"name="concepto" required><br>
-            <label>Monto:</label><br>
-            <input type="number"name="monto" required><br><br>
-            <button type="submit">Guardar</button><br>
-          </form>    
-          <a href="/">Volver</a>
-{% endblock%}

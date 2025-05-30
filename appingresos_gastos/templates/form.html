@@ -2,18 +2,30 @@
 
 {% block pageBase %}
 
+
+
 <h1>Esto seria {{tipoAccion}} de datos</h1>
 
-        <form action="/new" method="POST">
-            <label>Fecha:</label>
-            <input type="date" name="fecha"><br>
-            <label>Concepto:</label>
-            <input type="text" name="concepto" required><br>
-            <label>Monto:</label>
-            <input type="number" name="monto" required><br><br>
-            <button type="submit">{{tipoBoton}}</button>
-        </form>    
-          <a href="/">Volver</a>
+    <form action="/new" method="POST">
+        <label>Fecha:</label><br>
+        <input type="date" name="fecha" value="{{ dataForm.get('fecha', '') }}"><br>
+        <label>Concepto:</label><br>
+        <input type="text" name="concepto" value="{{ dataForm.get('concepto', '') }}" > <br>
+        <label>Monto:</label><br>
+        <input type="number" name="monto" value="{{ dataForm.get('monto', '') }}" step="0.01 "><br><br>
+        <button type="submit">{{tipoBoton}}</button>
+    </form>    
+      <a href="/">Volver</a>
+
+      <div>
+        <ul>
+            {%for item in error%}
+            
+              <li style="color:red ">{{item}}</li>                   
+            
+            {%endfor%}
+          </ul>
+      </div>
 
 
 {% endblock%}
