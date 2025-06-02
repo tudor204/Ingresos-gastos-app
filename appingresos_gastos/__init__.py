@@ -10,3 +10,5 @@ from appingresos_gastos.routes import *
 
 #Comando para ejeutar el servidor en modo debug, para realizar cambios en tiempo real 
 #flask --app main --debug run
+MOVIMIENTOS_FILES = "data/movimientos.csv"
+LAST_ID_FILE = "data/last_id.csv"
