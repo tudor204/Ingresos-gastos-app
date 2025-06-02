@@ -38,25 +38,12 @@ def edit(id):
 def remove(id):
 
     if request.method == "GET":
-        registro_buscado = select_by(id)
+        registro_buscado = select_by(id,True)
         return render_template("delete.html",title="Eliminar", data = registro_buscado)
     else:
         #aqui seria el metodo http post
-        fichero_read = open(MOVIMIENTOS_FILES,"r")        
-        csvReader = csv.reader(fichero_read,delimiter=",",quotechar='"')        
-        
-        registro_buscado=[]
-        for registros in csvReader:
-            if registros[0] != str(id):
-                #guardamos todo menos el registro con el id para borrar
-                registro_buscado.append(registros)  
-        fichero_read.close()
-
-        fichero_save = open(MOVIMIENTOS_FILES,"w",newline="")
-        csvWriter = csv.writer(fichero_save,delimiter=",",quotechar='"') 
-        for datos in registro_buscado:
-            csvWriter.writerow(datos)
-        fichero_save.close()
+        registro_buscado = select_by(id,False)
+        delete_by(registro_buscado)      
 
     return redirect("/")
 

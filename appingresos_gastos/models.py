@@ -12,21 +12,31 @@ def select_all():
     return datos
     
 
-def select_by(id):
+def select_by(id,condicion):
     mificheroDelete = open(MOVIMIENTOS_FILES,"r")
     lectura = csv.reader(mificheroDelete,delimiter=",",quotechar='"')
     registro_buscado=[]
     for registros in lectura:
-        if registros[0] == str(id):
-            #aqui en cuentro el id buscado en mi registro
-            registro_buscado.append(registros)
-            
+        if condicion == True:
+            if registros[0] == str(id):
+                #aqui en cuentro el id buscado en mi registro
+                registro_buscado.append(registros)
+
+        else:
+            if registros[0] != str(id):
+                #guardamos todo menos el registro con el id para borrar
+                registro_buscado.append(registros) 
+    mificheroDelete.close()        
     return registro_buscado
 
 
-def delete_by():
-    pass
-    
+def delete_by(registro_buscado):
+    fichero_save = open(MOVIMIENTOS_FILES,"w",newline="")
+    csvWriter = csv.writer(fichero_save,delimiter=",",quotechar='"') 
+    for datos in registro_buscado:
+        csvWriter.writerow(datos)
+    fichero_save.close()
+
 
 def insert(requestForm):
     fichero = open(LAST_ID_FILE,"r")
