@@ -15,17 +15,21 @@ def select_all():
 def select_by(id,condicion):
     mificheroDelete = open(MOVIMIENTOS_FILES,"r")
     lectura = csv.reader(mificheroDelete,delimiter=",",quotechar='"')
-    registro_buscado=[]
+    registro_buscado=any
     for registros in lectura:
         if condicion == True:
             if registros[0] == str(id):
                 #aqui en cuentro el id buscado en mi registro
-                registro_buscado.append(registros)
+                registro_buscado = registros
 
         else:
             if registros[0] != str(id):
                 #guardamos todo menos el registro con el id para borrar
-                registro_buscado.append(registros) 
+                registro_buscado.append(registros)
+
+    if condicion == True:
+        registro_buscado = converterDict(registro_buscado)
+
     mificheroDelete.close()        
     return registro_buscado
 
@@ -59,3 +63,26 @@ def insert(requestForm):
     lectura.writerow([new_id,requestForm['fecha'],requestForm['concepto'],requestForm['monto']])
     mifichero.close()
     
+def update(registros,requestForm):
+    lista=[]
+    for key,value in registros:
+        lista.append(value)
+
+    nuevos_datos=[]
+    
+    for item in registros:           
+        if value == str(id):
+            nuevos_datos.append([id,requestForm["fecha"],requestForm["concepto"],requestForm["monto"]])
+        else:
+            nuevos_datos.append(value)
+                
+        fichero = open(MOVIMIENTOS_FILES,"w",newline="")
+        csvwriter = csv.writer(fichero,delimiter=",",quotechar='"')
+        csvwriter.writerows(nuevos_datos)
+
+def converterDict(registro_buscado):
+    diccionario=dict()
+    diccionario["id"]=registro_buscado[0]
+    diccionario["fecha"]=registro_buscado[1]
+    diccionario["concepto"]=registro_buscado[2]
+    diccionario["monto"]=registro_buscado[3]
