@@ -7,6 +7,9 @@
 <h1>Esto seria {{tipoAccion}} de datos</h1>
 
     <form action="{{urlForm}}" method="POST">
+        {% if dataForm.id %}
+        <input type="hidden" name="id" value="{{ dataForm.id }}">
+        {% endif %}
         <label>Fecha:</label><br>
         <input type="date" name="fecha" value="{{ dataForm.fecha}}"><br>
         <label>Concepto:</label><br>

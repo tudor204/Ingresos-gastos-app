@@ -20,7 +20,7 @@ def create():
     else:
         return render_template("new.html",title="Registro",tipoAccion="Registro",tipoBoton="Guardar",dataForm={},urlForm="/new")
 
-@app.route("/update/<int:id>",methods=["GET","POST"])
+@app.route("/update/<id>",methods=["GET","POST"])
 def edit(id):
     if request.method == "GET": 
         
@@ -48,8 +48,6 @@ def remove(id):
         delete_by(registro_buscado)      
 
     return redirect("/")
-
-
     
 def validateForm(datosFormulario):
     errores=[]#lista para guardar errores
