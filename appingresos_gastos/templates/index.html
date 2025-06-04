@@ -4,23 +4,23 @@
 
 
 <h1>Esto seria una lista de Ingresos-Gastos</h1>
-    <table>
+    <table role="gridcell">
         <thead>
             <tr>
-                <th>#</th>
-                <th>Fecha</th>
-                <th>Concepto</th>
-                <th>Monto</th>
-                <th>Acciones</th>
+                
+                <th scope="col">Fecha</th>
+                <th scope="col">Concepto</th>
+                <th scope="col">Monto</th>
+                <th scope="col">Acciones</th>
             </tr>
         </thead>
         <tbody>
             {%for item in data%}
                 <tr>
-                    <td>{{item[0]}}</td>
-                    <td>{{item[1]}}</td>
-                    <td>{{item[2]}}</td>
-                    <td>{{item[3]}}€</td>
+                    
+                    <td scope="col">{{item[1]}}</td>
+                    <td scope="col">{{item[2]}}</td>
+                    <td scope="col">{{item[3]}}€</td>
                     <td>
                         <a href="/update/{{item[0]}}">Modificar</a>
                         <a href="/delete/{{item[0]}}">Eliminar</a>

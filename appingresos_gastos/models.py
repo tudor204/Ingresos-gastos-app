@@ -9,8 +9,7 @@ def select_all():
     for item in csvReader:
         datos.append(item) 
     fichero.close()  
-    return datos
-    
+    return datos    
 
 def select_by(id, condicion):
     mificheroDelete = open(MOVIMIENTOS_FILES, "r")
@@ -35,14 +34,12 @@ def select_by(id, condicion):
     mificheroDelete.close()
     return registro_buscado
 
-
 def delete_by(registro_buscado):
     fichero_save = open(MOVIMIENTOS_FILES,"w",newline="")
     csvWriter = csv.writer(fichero_save,delimiter=",",quotechar='"') 
     for datos in registro_buscado:
         csvWriter.writerow(datos)
     fichero_save.close()
-
 
 def insert(requestForm):
     fichero = open(LAST_ID_FILE,"r")
@@ -55,8 +52,7 @@ def insert(requestForm):
     #Guardar el nuevo last_id
     ficheroId = open(LAST_ID_FILE,"w")
     ficheroId.write(str(new_id))
-    ficheroId.close()  
-
+    ficheroId.close()
     #acceder al archivo y configurar para cargar nuevo registro
     mifichero = open(MOVIMIENTOS_FILES,"a",newline="")
     #llamar al metodo writer de escritura y configuramos el formato
@@ -83,7 +79,6 @@ def update(registros, requestForm):
     with open(MOVIMIENTOS_FILES, "w", newline="") as fichero:
         csvwriter = csv.writer(fichero, delimiter=",", quotechar='"')
         csvwriter.writerows(nuevos_datos)
-
 
 def converterDict(registro_buscado):
     diccionario=dict()
