@@ -1,35 +1,39 @@
 {% extends "base.html" %}
 
 {% block pageBase %}
+<section>
+  <h2 class="table-title">📊 Historial de Ingresos y Gastos</h2>
 
+  {% if data %}
+    <table role="grid">
+      <thead>
+        <tr>
+          <th scope="col">📅 Fecha</th>
+          <th scope="col">📝 Concepto</th>
+          <th scope="col">💰 Monto</th>
+          <th scope="col">⚙️ Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in data %}
+        <tr>
+          <td>{{ item[1] }}</td>
+          <td>{{ item[2] }}</td>
+          <td>{{ item[3] }}€</td>
+          <td>
+            <a href="/update/{{ item[0] }}" class="contrast">Modificar</a>
+            <a href="/delete/{{ item[0] }}" class="secondary">Eliminar</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>No hay registros aún. ¡Empieza añadiendo tu primer ingreso o gasto!</p>
+  {% endif %}
 
-<h1>Esto seria una lista de Ingresos-Gastos</h1>
-    <table role="gridcell">
-        <thead>
-            <tr>
-                
-                <th scope="col">Fecha</th>
-                <th scope="col">Concepto</th>
-                <th scope="col">Monto</th>
-                <th scope="col">Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            {%for item in data%}
-                <tr>
-                    
-                    <td scope="col">{{item[1]}}</td>
-                    <td scope="col">{{item[2]}}</td>
-                    <td scope="col">{{item[3]}}€</td>
-                    <td>
-                        <a href="/update/{{item[0]}}">Modificar</a>
-                        <a href="/delete/{{item[0]}}">Eliminar</a>
-                    </td>                          
-                </tr>
-            {%endfor%}
-        </tbody>        
-        </table>
-        <a href="/new">Nuevo</a>
-
-        
-{% endblock%}
+  <div style="margin-top: 2rem;">
+    <a href="/new" class="primary">+ Nuevo Registro</a>
+  </div>
+</section>
+{% endblock %}

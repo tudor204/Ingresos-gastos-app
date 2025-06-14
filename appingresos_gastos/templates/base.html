@@ -1,33 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ingresos-Gastos:{{title}}</title>
-    <link rel="stylesheet" href="static/style.css">
-    <link rel="stylesheet" href="static/pico.css">
-   
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ingresos-Gastos: {{ title }}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='pico.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
 </head>
-<!-- ésto es un comentario -->
 
 <body>
-    <header>
-        <div>
-            <a href="/" class="miEstilo1">Inicio</a>
-            <a href="/new" class="miEstilo2">Nuevo</a>
-          
-        </div>
-        <h1 style="background-color: blue;">Aplicación Web flask de Gastos y Ingresos</h1>
-    </header>
-    <section>
-        {#ésto es un comentario en jinja#}
-        {% block pageBase %} {#ésto es un huevo para recirbir una plantilla html#}
-        {% endblock %}
+  <header class="main-header">
+    <nav class="container">
+      <ul>
+        <li><strong>💰 Ingresos & Gastos</strong></li>
+      </ul>
+      <ul>
+        <li><a href="/" class="contrast">Inicio</a></li>
+        <li><a href="/new" class="primary">+ Nuevo Registro</a></li>
+      </ul>
+    </nav>
+    <div class="hero">
+      <h1>Gestor Financiero Personal</h1>
+      <p>Organiza tus ingresos y gastos con claridad y control total</p>
+    </div>
+  </header>
 
-    </section>   
-    <footer>
-        &copy;2025 Todos los derechos reservados
-    </footer>   
-    
+  <main class="container content">
+    {% block pageBase %}
+      {# Aquí se insertarán las plantillas hijas #}
+    {% endblock %}
+  </main>
+
+  <footer class="main-footer">
+    <div class="container">
+      <p>&copy; 2025 - Todos los derechos reservados</p>
+      <p>Desarrollado con ❤️ usando Flask y Pico.css</p>
+    </div>
+  </footer>
 </body>
 </html>

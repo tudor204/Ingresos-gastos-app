@@ -1,15 +1,140 @@
-table,th,td{
-    border: 1px solid rgba(184, 8, 17, 0.568);
-}
-
-.miEstilo{
-    color:brown;
-    text-decoration: solid;
-}
-.miEstilo2{
-    color:rgb(4, 0, 255);
-    text-decoration: overline;
-}
-#quantity{
-    color:blue
-}
+/* ==== Colores personalizados ==== */
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --accent-color: #1abc9c;
+    --bg-color: #f4f7f9;
+    --text-color: #2d2d2d;
+  }
+  
+  /* ==== General ==== */
+  body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  h1, h2, h3 {
+    color: var(--primary-color);
+  }
+  
+  /* ==== Header ==== */
+  .main-header {
+    background-color: var(--primary-color);
+    color: white;
+    padding-bottom: 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  .main-header nav a {
+    color: white;
+    font-weight: bold;
+  }
+  
+  .main-header .hero {
+    text-align: center;
+    padding: 2rem 1rem;
+  }
+  
+  .main-header .hero h1 {
+    margin-bottom: 0.5rem;
+    font-size: 2rem;
+  }
+  
+  .main-header .hero p {
+    font-size: 1rem;
+    color: #dbe2ec;
+  }
+  
+  /* ==== Main content ==== */
+  .content {
+    padding: 2rem 0;
+  }
+  
+  /* ==== Footer ==== */
+  .main-footer {
+    background-color: #eaeaea;
+    text-align: center;
+    padding: 1.5rem 0;
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 3rem;
+  }
+  
+/* ==== Tabla de ingresos-gastos ==== */
+table {
+    width: 100%;
+    margin-top: 1rem;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+  
+  thead {
+    background-color: var(--secondary-color);
+    color: white;
+  }
+  
+  th, td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  tr:hover {
+    background-color: #f3f9ff;
+  }
+  
+  .table-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+  }
+/* ==== Formulario ==== */
+.formulario-section {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  }
+  
+  form label {
+    margin-top: 1rem;
+    display: block;
+    font-weight: 600;
+    color: var(--primary-color);
+  }
+  
+  input[type="text"],
+  input[type="date"],
+  input[type="number"] {
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 0.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+  }
+  
+  button,
+  a[role="button"] {
+    margin-top: 1rem;
+    margin-right: 0.5rem;
+  }
+  
+  /* ==== Errores ==== */
+  .error-box {
+    margin-top: 2rem;
+    background-color: #ffe6e6;
+    color: #a94442;
+    border: 1px solid #f5c6cb;
+    padding: 1rem;
+    border-radius: 8px;
+  }
+    

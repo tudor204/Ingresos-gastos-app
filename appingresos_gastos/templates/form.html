@@ -2,33 +2,37 @@
 
 {% block pageBase %}
 
+<section class="formulario-section">
+  <h2>{{ tipoAccion }} de Registro</h2>
+  <p>Completa los campos para {{ tipoAccion|lower }} un ingreso o gasto.</p>
 
+  <form action="{{ urlForm }}" method="POST">
+    {% if dataForm.id %}
+      <input type="hidden" name="id" value="{{ dataForm.id }}">
+    {% endif %}
 
-<h1>Esto seria {{tipoAccion}} de datos</h1>
+    <label for="fecha">📅 Fecha:</label>
+    <input type="date" id="fecha" name="fecha" value="{{ dataForm.fecha }}" required>
 
-    <form action="{{urlForm}}" method="POST">
-        {% if dataForm.id %}
-        <input type="hidden" name="id" value="{{ dataForm.id }}">
-        {% endif %}
-        <label>Fecha:</label><br>
-        <input type="date" name="fecha" value="{{ dataForm.fecha}}"><br>
-        <label>Concepto:</label><br>
-        <input type="text" name="concepto" value="{{ dataForm.concepto}}">  <br>
-        <label>Monto:</label><br>
-        <input type="number" name="monto" value="{{ dataForm.monto}}" step="0.01 "><br><br>
-        <button type="submit">{{tipoBoton}}</button>
-    </form>    
-      <a href="/">Volver</a>
+    <label for="concepto">📝 Concepto:</label>
+    <input type="text" id="concepto" name="concepto" value="{{ dataForm.concepto }}" placeholder="Ej. Sueldo, Alquiler, Supermercado" required>
 
-      <div>
-        <ul>
-            {%for item in error%}
-            
-              <li style="color:red ">{{item}}</li>                   
-            
-            {%endfor%}
-          </ul>
-      </div>
+    <label for="monto">💰 Monto (€):</label>
+    <input type="number" id="monto" name="monto" value="{{ dataForm.monto }}" step="0.01" placeholder="Ej. 1200.00" required>
 
+    <button type="submit" class="primary">{{ tipoBoton }}</button>
+    <a href="/" role="button" class="secondary">Volver</a>
+  </form>
 
-{% endblock%}
+  {% if error %}
+    <article class="error-box">
+      <ul>
+        {% for item in error %}
+          <li>{{ item }}</li>
+        {% endfor %}
+      </ul>
+    </article>
+  {% endif %}
+</section>
+
+{% endblock %}
